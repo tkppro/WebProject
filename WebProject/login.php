@@ -4,7 +4,7 @@ session_start();
  
 //Khai báo utf-8 để hiển thị được tiếng việt
 header('Content-Type: text/html; charset=UTF-8');
- 
+
 //Xử lý đăng nhập
 if (isset($_POST['dangnhap'])) 
 {
@@ -17,18 +17,18 @@ if (isset($_POST['dangnhap']))
      
     //Kiểm tra đã nhập đủ tên đăng nhập với mật khẩu chưa
     if (!$username || !$password) {
-        echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
+        //echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        //exit;
     }
      
     // mã hóa pasword
-    $password = $conn->real_escape_string($password);
+    $password = hash('sha512', $password);
      
     //Kiểm tra tên đăng nhập có tồn tại không
     $query = mysqli_query($conn, "SELECT account_name, account_password FROM account WHERE account_name='$username'");
     if (mysqli_num_rows($query) == 0) {
-        echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
+        //echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        //exit;
     }
      
     //Lấy mật khẩu trong database ra
@@ -36,21 +36,22 @@ if (isset($_POST['dangnhap']))
     
     //So sánh 2 mật khẩu có trùng khớp hay không
     if ($password != $row['account_password']) {
-        echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
+        //echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        //exit;
     }
-     
-    //Lưu tên đăng nhập
-    $_SESSION['username'] = $username;
-    $checkQuery = mysqli_query($conn, "SELECT email, full_name, birthday FROM account WHERE account_name='$username'");
-    if (mysqli_num_rows($query) != 0)
+
+    $checkQuery = mysqli_query($conn, "SELECT account_name, account_password FROM account WHERE account_name='$username' AND account_password = '$password'");
+    if(mysqli_num_rows($checkQuery) > 0) 
     {
-        header('location: http://localhost/WebProject/update.php');
-    }
-    else 
-    {
+        $_SESSION['username'] = $username;
+        //$seconCheckQuery = mysqli_query($conn, "SELECT email FROM account WHERE account_name='$username'");
+    
+        //if(mysqli_num_rows($seconCheckQuery) == 0)
+            //header('location: http://localhost/WebProject/update.php');
         header('location: http://localhost/WebProject/home-page.php');
-    }
+    }//Lưu tên đăng nhập
+    else
+        header('location: http://localhost/WebProject/login.php?error=1');
     die();
     mysqli_close($conn);
 }
@@ -91,7 +92,10 @@ if (isset($_POST['dangnhap']))
                                         <input id="password" type="password" class="form-control" name="password" required>
                                     </div>
                                 </div>
-
+                                <?php
+                                if(isset($_GET['error']) == true)
+                                    echo '<font color="#FF0000"><p align="center">Username && Password not match</p></font>';
+                                ?>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary" name="dangnhap">

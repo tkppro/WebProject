@@ -37,7 +37,8 @@ if ($password != $rePassword)
 }
 
 // Mã khóa mật khẩu
-$password = $conn->real_escape_string($password);
+// $password = mysqli_real_escape_string($conn,$password);
+$password = hash('sha512', $password);
 //Kiểm tra tên đăng nhập này đã có người dùng chưa
 if (mysqli_num_rows(mysqli_query($conn, "SELECT account_name FROM account WHERE account_name='$username'")) > 0){
     echo "Tên đăng nhập này đã có người dùng. Vui lòng chọn tên đăng nhập khác. <a href='javascript: history.go(-1)'>Trở lại</a>";

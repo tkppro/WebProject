@@ -18,7 +18,7 @@
                         <div class="card-header"></div>
 
                         <div class="card-body">
-                            <form method="POST" action="login.php">
+                            <form method="POST" action="handle-register.php">
                                 <div class="form-group row">
                                     <label for="userName" class="col-sm-4 col-form-label text-md-right">User name</label>
 
@@ -36,16 +36,16 @@
                                 </div>
 
                                  <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Re-Password</label>
+                                    <label for="rePassword" class="col-md-4 col-form-label text-md-right">Re-Password</label>
 
                                     <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control" name="password" required>
+                                        <input id="rePassword" type="password" class="form-control" name="rePassword" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary" name="dangnhap">
+                                        <button type="submit" class="btn btn-primary" name="">
                                             Register
                                         </button>
                                     </div>

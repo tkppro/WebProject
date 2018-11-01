@@ -5,11 +5,11 @@ include 'connection.php';
 
 if (!isset($_SESSION['username']))
 {
-    echo 'bạn chưa đăng nhập';
+    
     //sleep(10);
     header('location: http://localhost/WebProject/login.php');
-    die('');
 }
+
 $email = $fullName = $birthday = $gender = $position = "";
 if (isset($_POST["update-btn"]))
 {
