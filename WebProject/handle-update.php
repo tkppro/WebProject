@@ -2,6 +2,7 @@
 session_start();
 include 'connection.php';
 
+
 if (!isset($_SESSION['username']))
 {
     echo 'bạn chưa đăng nhập';
@@ -9,22 +10,17 @@ if (!isset($_SESSION['username']))
     header('location: http://localhost/WebProject/login.php');
     die('');
 }
-
+$email = $fullName = $birthday = $gender = $position = "";
 if (isset($_POST["update-btn"]))
 {
-    // if (!$email || !$fullName || !$birthDay || !$gender || !$position)
-    // {
-    //     echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
-    //     exit;
-    // }
-    
+
     $email = addslashes($_POST['email']);
     $fullName = addslashes($_POST['fullName']);
     $birthday = addslashes($_POST['birthday']);
     $gender = addslashes($_POST['gender']);
     $position = addslashes($_POST['position']);
 
-    if (!$email || !$fullName || !$birthday || !$gender || !$position)
+    if (!$email || !$fullName || !$birthday || !$gender)
     {
         echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
@@ -55,8 +51,11 @@ if (isset($_POST["update-btn"]))
 $sql = "UPDATE account SET email = '$email', full_name = '$fullName', birthday = '$birthday', gender = '$gender', position = '$position' WHERE account_name = '{$_SESSION['username']}'"; 
 $updateMember = mysqli_query($conn, $sql);
 
+
 if ($updateMember)
-        echo "Quá trình cập nhật thành công. <a href='home-page.php'>Về trang chủ</a>";
+    echo "Quá trình cập nhật thành công. <a href='home-page.php'>Về trang chủ</a>";
+
+    
     else
         echo "Có lỗi xảy ra trong quá trình cập nhật. <a href='logout.php'>Thử lại</a>";
 mysqli_close($conn);

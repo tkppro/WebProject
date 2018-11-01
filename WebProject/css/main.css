@@ -112,7 +112,18 @@ input[type=text]:hover {
 	background-color: none;
 }
 
+select:hover {
+	outline: none;
+	background-color: none;
+}
+
+
 input[type=text]:visited {
+	outline: none;
+	background-color: none;
+}
+
+select:visited {
 	outline: none;
 	background-color: none;
 }
@@ -122,18 +133,35 @@ input[type=text]:active {
 	background-color: none;
 }
 
+select:active {
+	outline: none;
+	background-color: none;
+}
+
 .input[type=text]:focus {
 	outline: none;
 	background-color: none;
 }
 
-input {
+select:focus {
+	outline: none;
+	background-color: none;
+}
+
+input{
 	padding-left:20px;
 	background-color: none;
 	outline: none;
 	color: white;
 	font-size: 16px;
 	font-weight: 600;
+}
+
+select {
+	padding-left:20px;
+	background-color: none;
+	outline: none;
+	color: white;
 }
 
 button:focus{

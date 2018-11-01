@@ -61,33 +61,53 @@ if (isset($_POST['dangnhap']))
     <head>
         <title>Login</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/main1.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <header>
-            <img class="img-logo" src="images/logo1.png">
+        <header class="header-login">
+            <img class="img-logo" src="images/logo.png">
         </header>
-        <div class="body-container">
-            <form action='login.php' method='POST'>
-                <p>Username<br></p>
-                <input type="text" name="userName"><br> 
-                <p>Password<br></p>
-                <input type="password" name="password"><br>          
-                <button class="button-login" type="submit" name="dangnhap">Login</button>
-                <button type="button" class="button-login"><a href='register.php'>Register</a></button>
-            </form>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header"></div>
 
-        <button class="button-google">
-            <img class="img-button" src="images/buttonG+.png">
-        </button>
+                        <div class="card-body">
+                            <form method="POST" action="login.php">
+                                <div class="form-group row">
+                                    <label for="userName" class="col-sm-4 col-form-label text-md-right">User name</label>
 
-        <div class = "register-link">
-            <a href="register.php">Don't have an account ?</a>
-        </div>
+                                    <div class="col-md-6">
+                                        <input id="userName" type="userName" class="form-control" name="userName" value="" required autofocus>
+                                    </div>
+                                </div>
 
-        <div class = "forgot-link">
-            <a href="#">Forgot password </a>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password" class="form-control" name="password" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary" name="dangnhap">
+                                            Login
+                                        </button>
+
+                                        <a class="btn btn-link" href="register.php">
+                                            Register
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
