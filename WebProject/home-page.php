@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -60,10 +60,6 @@
                 </div>
             </div>
         </div>
-
-      
-
-
   
   <!-- add Javasscript file from js file -->
   <script type="text/javascript" src="js/jquery.min.js"></script>

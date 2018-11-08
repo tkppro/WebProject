@@ -2,12 +2,6 @@
 session_start();
 include 'connection.php';
 
-if (!isset($_SESSION['username']))
-{
-    
-    //sleep(10);
-    header('location: http://localhost/WebProject/login.php');
-}
 
 $email = $fullName = $birthday = $gender = $position = "";
 if (isset($_POST["update-btn"]))

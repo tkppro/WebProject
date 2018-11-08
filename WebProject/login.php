@@ -41,9 +41,10 @@ if (isset($_POST['dangnhap']))
     }
 
     $checkQuery = mysqli_query($conn, "SELECT account_name, account_password FROM account WHERE account_name='$username' AND account_password = '$password'");
+    $_SESSION['username'] = $username;
     if(mysqli_num_rows($checkQuery) > 0) 
     {
-        $_SESSION['username'] = $username;
+        
         //$seconCheckQuery = mysqli_query($conn, "SELECT email FROM account WHERE account_name='$username'");
     
         //if(mysqli_num_rows($seconCheckQuery) == 0)

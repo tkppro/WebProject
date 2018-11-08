@@ -1,7 +1,15 @@
 <?php
 include('connection.php');
+session_start();
+// if (!isset($_SESSION['username']) && !$_SESSION['username'])
+// {
+    
+//     //sleep(10);
+//     header('location: http://localhost/WebProject/login.php');
+//     exit();
+// }
 
-$query = mysqli_query($conn, "SELECT * FROM account");
+$query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '{$_SESSION['username']}'");
 $row = mysqli_fetch_assoc($query);
 $fullName = $row['full_name'];
 $email = $row['email'];
@@ -11,7 +19,7 @@ $gender = $row['gender'];
 $position = $row['position'];
 
 
-mysqli_close($conn);    
+mysqli_close($conn);
 ?>
 
 
@@ -80,7 +88,7 @@ mysqli_close($conn);
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="form-group row">
                                     <label for="birthday" class="col-sm-4 col-form-label text-md-right">Birthday</label>
 
