@@ -1,3 +1,21 @@
+<?php
+include('connection.php');
+
+$query = mysqli_query($conn, "SELECT * FROM account");
+$row = mysqli_fetch_assoc($query);
+$fullName = $row['full_name'];
+$email = $row['email'];
+
+$birthday = $row['birthday'];
+$gender = $row['gender'];
+$position = $row['position'];
+
+
+mysqli_close($conn);    
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +66,8 @@
                                     <label for="fullName" class="col-sm-4 col-form-label text-md-right">Full Name</label>
 
                                     <div class="col-md-6">
-                                        <input id="fullName" type="text" class="form-control" name="fullName" value="">
+                                        <input id="fullName" type="text" class="form-control" name="fullName" 
+                                        value="<?php echo $fullName;?>">
                                     </div>
 
                                 </div>
@@ -57,16 +76,17 @@
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">Email</label>
 
                                     <div class="col-md-6">
-                                        <input id="email" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" type="email" class="form-control" name="email" value="">
+                                        <input id="email" aria-describedby="emailHelp" placeholder="Enter email" class="form-control" type="email" class="form-control" name="email" value="<?php echo $email;?>">
                                     </div>
 
                                 </div>
-
+                                
                                 <div class="form-group row">
                                     <label for="birthday" class="col-sm-4 col-form-label text-md-right">Birthday</label>
 
                                     <div class="col-md-6">
-                                        <input id="birthday" type="date" class="form-control " name="birthday" value="">
+                                        <input id="birthday" type="date" class="form-control " name="birthday" 
+                                        value="<?php echo $birthday;?>">
                                        
                                     </div>
 

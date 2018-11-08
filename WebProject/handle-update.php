@@ -2,7 +2,6 @@
 session_start();
 include 'connection.php';
 
-
 if (!isset($_SESSION['username']))
 {
     
@@ -33,11 +32,12 @@ if (isset($_POST["update-btn"]))
     }
           
     //Kiểm tra email đã có người dùng chưa
-    if (mysqli_num_rows(mysqli_query($conn, "SELECT email FROM account WHERE email='$email'")) > 0)
-    {
-        echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
+    //if($flag == false)
+        if (mysqli_num_rows(mysqli_query($conn, "SELECT email FROM account WHERE email='$email'")) > 0)
+        {
+            echo "Email này đã có người dùng. Vui lòng chọn Email khác. <a href='javascript: history.go(-1)'>Trở lại</a>";
+            exit;
+        }
     //Kiểm tra dạng nhập vào của ngày sinh
     if (!preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $birthday))
     {
