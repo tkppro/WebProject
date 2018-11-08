@@ -1,13 +1,11 @@
 <?php
 include('connection.php');
 session_start();
-// if (!isset($_SESSION['username']) && !$_SESSION['username'])
-// {
-    
-//     //sleep(10);
-//     header('location: http://localhost/WebProject/login.php');
-//     exit();
-// }
+if (!isset($_SESSION['username']) && !$_SESSION['username'])
+{
+    header('location: http://localhost/WebProject/login.php');
+    $_SESSION['errLogin'] = 'Bạn cần đăng nhập trước!';
+}
 
 $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '{$_SESSION['username']}'");
 $row = mysqli_fetch_assoc($query);

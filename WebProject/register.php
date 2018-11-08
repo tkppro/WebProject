@@ -48,7 +48,11 @@
                                         <button type="submit" class="btn btn-primary" name="">
                                             Register
                                         </button>
+                                        <a class="btn btn-success" href="login.php">
+                                            Login
+                                        </a>
                                     </div>
+
                                 </div>
                             </form>
                         </div>

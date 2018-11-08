@@ -8,6 +8,7 @@ header('Content-Type: text/html; charset=UTF-8');
 //Xử lý đăng nhập
 if (isset($_POST['dangnhap'])) 
 {
+    unset($_SESSION['errLogin']);
     //Kết nối tới database
     include('connection.php');
      
@@ -41,15 +42,18 @@ if (isset($_POST['dangnhap']))
     }
 
     $checkQuery = mysqli_query($conn, "SELECT account_name, account_password FROM account WHERE account_name='$username' AND account_password = '$password'");
-    $_SESSION['username'] = $username;
+    
     if(mysqli_num_rows($checkQuery) > 0) 
     {
-        
-        //$seconCheckQuery = mysqli_query($conn, "SELECT email FROM account WHERE account_name='$username'");
-    
-        //if(mysqli_num_rows($seconCheckQuery) == 0)
-            //header('location: http://localhost/WebProject/update.php');
-        header('location: http://localhost/WebProject/home-page.php');
+        $_SESSION['username'] = $username;
+        $query = mysqli_query($conn, "SELECT email FROM account WHERE account_name = '$username'");
+        $row = mysqli_fetch_assoc($query);
+        if ($row['email'] == '')
+        {
+            header('location: http://localhost/WebProject/update.php');
+        }
+        else
+            header('location: http://localhost/WebProject/home-page.php');
     }//Lưu tên đăng nhập
     else
         header('location: http://localhost/WebProject/login.php?error=1');
@@ -74,7 +78,12 @@ if (isset($_POST['dangnhap']))
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header"></div>
+                        <div class="card-header">
+                        <?php 
+                            if (isset($_SESSION['errLogin']))
+                                echo '<font color="#FF0000"><p align="center">' . $_SESSION['errLogin'] . '</p></font>';
+                        ?>    
+                        </div>
 
                         <div class="card-body">
                             <form method="POST" action="login.php">
@@ -94,7 +103,7 @@ if (isset($_POST['dangnhap']))
                                     </div>
                                 </div>
                                 <?php
-                                if(isset($_GET['error']) == true)
+                                if (isset($_GET['error']) == true)
                                     echo '<font color="#FF0000"><p align="center">Username && Password not match</p></font>';
                                 ?>
                                 <div class="form-group row mb-0">
