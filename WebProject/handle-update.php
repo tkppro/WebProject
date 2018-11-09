@@ -48,9 +48,7 @@ $updateMember = mysqli_query($conn, $sql);
 
 if ($updateMember)
     echo "Quá trình cập nhật thành công. <a href='home-page.php'>Về trang chủ</a>";
-
-    
-    else
-        echo "Có lỗi xảy ra trong quá trình cập nhật. <a href='logout.php'>Thử lại</a>";
+else
+    echo "Có lỗi xảy ra trong quá trình cập nhật. <a href='logout.php'>Thử lại</a>";
 mysqli_close($conn);
 ?>

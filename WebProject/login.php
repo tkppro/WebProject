@@ -1,16 +1,32 @@
 <?php
 //Khai báo sử dụng session
 session_start();
- 
+include('connection.php');
 //Khai báo utf-8 để hiển thị được tiếng việt
 header('Content-Type: text/html; charset=UTF-8');
+
+$username = $password = '';
+// $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
+// $row = mysqli_fetch_assoc($query);
+
+// if(isset($_SESSION['username']) && $_SESSION['username'])
+// {
+//     if ($row['position'] == 1)
+//     {
+//         header('location: http://localhost/WebProject/home-page.php');
+//     }
+//     if ($row['position'] == 0)
+//     {
+//         header('location: http://localhost/WebProject/home-page-student.php');
+//     }
+// }
 
 //Xử lý đăng nhập
 if (isset($_POST['dangnhap'])) 
 {
     unset($_SESSION['errLogin']);
     //Kết nối tới database
-    include('connection.php');
+    
      
     //Lấy dữ liệu nhập vào
     $username = addslashes($_POST['userName']);
@@ -46,14 +62,21 @@ if (isset($_POST['dangnhap']))
     if(mysqli_num_rows($checkQuery) > 0) 
     {
         $_SESSION['username'] = $username;
-        $query = mysqli_query($conn, "SELECT email FROM account WHERE account_name = '$username'");
+        $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
         $row = mysqli_fetch_assoc($query);
         if ($row['email'] == '')
         {
             header('location: http://localhost/WebProject/update.php');
         }
-        else
+        if ($row['position'] == 1)
+        {
             header('location: http://localhost/WebProject/home-page.php');
+        }
+        if ($row['position'] == 0)
+        {
+            header('location: http://localhost/WebProject/home-page-student.php');
+        }
+            
     }//Lưu tên đăng nhập
     else
         header('location: http://localhost/WebProject/login.php?error=1');
