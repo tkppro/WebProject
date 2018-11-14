@@ -41,7 +41,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
           <div class="card">
-            <div class="card-header"><h1>Teacher</h1></div>
+            <div class="card-header"><h1>Welcome</h1></div>
             <div class="card-body">
               <?php 
                 if (isset($_SESSION['username']) && $_SESSION['username']){

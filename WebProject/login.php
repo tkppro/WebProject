@@ -6,20 +6,16 @@ include('connection.php');
 header('Content-Type: text/html; charset=UTF-8');
 
 $username = $password = '';
-// $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
-// $row = mysqli_fetch_assoc($query);
+$query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
+$row = mysqli_fetch_assoc($query);
 
-// if(isset($_SESSION['username']) && $_SESSION['username'])
-// {
-//     if ($row['position'] == 1)
-//     {
-//         header('location: http://localhost/WebProject/home-page.php');
-//     }
-//     if ($row['position'] == 0)
-//     {
-//         header('location: http://localhost/WebProject/home-page-student.php');
-//     }
-// }
+if(isset($_SESSION['username']) && $_SESSION['username'])
+{
+    if ($row['position'] == 1)
+    {
+        header('location: http://localhost/WebProject/home-page.php');
+    }
+}
 
 //Xử lý đăng nhập
 if (isset($_POST['dangnhap'])) 
@@ -68,14 +64,10 @@ if (isset($_POST['dangnhap']))
         {
             header('location: http://localhost/WebProject/update.php');
         }
-        if ($row['position'] == 1)
-        {
-            header('location: http://localhost/WebProject/home-page.php');
-        }
-        if ($row['position'] == 0)
-        {
-            header('location: http://localhost/WebProject/home-page-student.php');
-        }
+        // if ($row['position'] == 1)
+        // {
+        header('location: http://localhost/WebProject/home-page.php');
+        // }
             
     }//Lưu tên đăng nhập
     else
