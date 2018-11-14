@@ -4,7 +4,10 @@
   <head>
     <title>Home page</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/flickity.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/styles.css">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   </head>
   <body>
@@ -55,10 +58,48 @@
       </div>
     </div>
   </div>
-  
+
+  <div class="hero">
+    <div class="carousel js-flickity">
+      <div class="carousel-cell" style="background-image: url(images/slider1.jpg);">
+      </div>
+      <div class="carousel-cell" style="background-image: url(images/slider2.jpg);">
+      </div>
+      <div class="carousel-cell" style="background-image: url(images/slider3.jpg);">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+          <ul class="list-unstyled list-inline social text-center">
+            <li class="list-inline-item"><a href="https://www.facebook.com/vnuk.edu.vn/"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="https://www.instagram.com/vnuk_edu_vn/"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+            <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        </hr>
+      </div>  
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p>Software Project Management | 16CSE Class</p>
+          <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="http://vnuk.udn.vn/" target="_blank">VN-UK Institute</a></p>
+        </div>
+        </hr>
+      </div>  
+    </div>
+  </section>
+  <!-- ./Footer -->
+
   <!-- add Javasscript file from js file -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script src="js/flickity.pkgd.min.js"></script>
   <script type="text/javascript" src='js/main.js'></script>   
   </body>
 </html>
