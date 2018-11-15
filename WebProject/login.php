@@ -6,15 +6,12 @@ include('connection.php');
 header('Content-Type: text/html; charset=UTF-8');
 
 $username = $password = '';
-$query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
-$row = mysqli_fetch_assoc($query);
+// $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
+// $row = mysqli_fetch_assoc($query);
 
 if(isset($_SESSION['username']) && $_SESSION['username'])
 {
-    if ($row['position'] == 1)
-    {
-        header('location: http://localhost/WebProject/home-page.php');
-    }
+    header('location: http://localhost/WebProject/home-page.php');
 }
 
 //Xử lý đăng nhập
@@ -139,7 +136,7 @@ if (isset($_POST['dangnhap']))
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>

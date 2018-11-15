@@ -28,8 +28,31 @@ if (!$username || !$password || !$rePassword)
     echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
     exit;
 }
-      
-    
+     
+if (strlen($username) < 6 || strlen($username) > 32)
+{
+    echo "Độ dài hợp lệ của tên đăng nhập từ 6-32 kí tự.<a href='javascript: history.go(-1)'>Trở lại</a>";
+    exit;
+}
+
+if (!preg_match('/^[a-zA-Z0-9@_]*$/',$username))  
+{
+    echo "Sai định dạng tên đăng nhập. Chỉ cho phép chữ cái, số và không có khoảng trống.<a href='javascript: history.go(-1)'>Trở lại</a>";
+    exit;
+}
+
+if (strlen($password) < 6 || strlen($password) > 32)
+{
+    echo "Độ dài hợp lệ của mật khẩu từ 6-32 kí tự.<a href='javascript: history.go(-1)'>Trở lại</a>";
+    exit;
+}
+
+if (!preg_match('/^[a-zA-Z0-9@_]*$/',$password))
+{
+    echo "Sai định dạng mật khẩu. Chỉ cho phép chữ cái, số và không có khoảng trống.<a href='javascript: history.go(-1)'>Trở lại</a>";
+    exit;
+}
+
 if ($password != $rePassword)
 {
     echo "Phải nhập lại password đúng!. <a href='javascript: history.go(-1)'>Trở lại</a>";
