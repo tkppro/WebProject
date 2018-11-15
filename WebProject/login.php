@@ -139,6 +139,7 @@ if (isset($_POST['dangnhap']))
                     </div>
                 </div>
             </div>
+            
         </div>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
