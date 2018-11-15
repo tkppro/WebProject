@@ -5,9 +5,15 @@ include('connection.php');
 //Khai báo utf-8 để hiển thị được tiếng việt
 header('Content-Type: text/html; charset=UTF-8');
 
+// unset($_SESSION['errLengthUsername']);
+// unset($_SESSION['errFormatUsername']);
+// unset($_SESSION['errLengthPassword']);
+// unset($_SESSION['errFormatPassword']);
+// unset($_SESSION['errRePassword']);
+// unset($_SESSION['errLengthUsername']);
+
+
 $username = $password = '';
-// $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '$username'");
-// $row = mysqli_fetch_assoc($query);
 
 if(isset($_SESSION['username']) && $_SESSION['username'])
 {
@@ -18,28 +24,26 @@ if(isset($_SESSION['username']) && $_SESSION['username'])
 if (isset($_POST['dangnhap'])) 
 {
     unset($_SESSION['errLogin']);
-    //Kết nối tới database
-    
      
     //Lấy dữ liệu nhập vào
     $username = addslashes($_POST['userName']);
     $password = addslashes($_POST['password']);
      
     //Kiểm tra đã nhập đủ tên đăng nhập với mật khẩu chưa
-    if (!$username || !$password) {
-        //echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        //exit;
-    }
+    // if (!$username || !$password) {
+    //     echo "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu. <a href='javascript: history.go(-1)'>Trở lại</a>";
+    //     exit;
+    // }
      
     // mã hóa pasword
     $password = hash('sha512', $password);
      
     //Kiểm tra tên đăng nhập có tồn tại không
     $query = mysqli_query($conn, "SELECT account_name, account_password FROM account WHERE account_name='$username'");
-    if (mysqli_num_rows($query) == 0) {
-        //echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        //exit;
-    }
+    // if (mysqli_num_rows($query) == 0) {
+    //     echo "Tên đăng nhập này không tồn tại. Vui lòng kiểm tra lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+    //     exit;
+    // }
      
     //Lấy mật khẩu trong database ra
     $row = mysqli_fetch_assoc($query);
@@ -62,8 +66,7 @@ if (isset($_POST['dangnhap']))
             $_SESSION['firstLogin'] = 'Chào mừng bạn đến trang cập nhật thông tin vì đây là lần đăng nhập đầu tiên của bạn.';
             header('location: http://localhost/WebProject/update.php');
         }
-        // if ($row['position'] == 1)
-        // {
+        
         else
             header('location: http://localhost/WebProject/home-page.php');
         // }
@@ -96,6 +99,8 @@ if (isset($_POST['dangnhap']))
                         <?php 
                             if (isset($_SESSION['errLogin']))
                                 echo '<font color="#FF0000"><p align="center">' . $_SESSION['errLogin'] . '</p></font>';
+                            // if (isset($_SESSION['succReg']))
+                            //     echo '<font color="#17b217"><p align="center">' . $_SESSION['succReg'] . '</p></font>';
                         ?>    
                         </div>
 

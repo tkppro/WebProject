@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,11 @@
 
                                     <div class="col-md-6">
                                         <input id="userName" type="userName" class="form-control" name="userName" value="" required autofocus>
+                                        <!-- <?php if (isset($_SESSION['errLengthUsername']))
+                                            echo '<font color="#FF0000"><p align="center">' . $_SESSION['errLengthUsername'] . '</p></font>';
+                                        ?> -->
                                     </div>
+
                                 </div>
 
                                 <div class="form-group row">
@@ -51,6 +56,10 @@
                                         <a class="btn btn-success" href="login.php">
                                             Login
                                         </a>
+                                        <!-- <?php 
+                                        if (isset($_SESSION['errBlankReg']))
+                                            echo '<font color="#FF0000"><p align="center">' . $_SESSION['errBlankReg'] . '</p></font>';
+                                        ?> -->
                                     </div>
 
                                 </div>
