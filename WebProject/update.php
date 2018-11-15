@@ -97,8 +97,8 @@ mysqli_close($conn);
 
                                     <div class="col-md-6">
                                         <select id="gender" name="gender" class="form-control">
-                                            <option value="Nam">Male</option>
-                                            <option value="Nữ">Female</option>
+                                            <option value="Nam" <?php if ($gender == 'Nam') echo 'selected';?> >Male</option>
+                                            <option value="Nữ" <?php if ($gender == 'Nữ') echo 'selected';?>>Female</option>
                                         </select>
                                         
                                     </div>
@@ -109,8 +109,8 @@ mysqli_close($conn);
 
                                     <div class="col-md-6">
                                         <select id="position" name="position" class="form-control">
-                                            <option value="0">Student</option>
-                                            <option value="1">Teacher</option>
+                                            <option value="0" <?php if ($position == 0) echo 'selected';?> >Student</option>
+                                            <option value="1" <?php if ($position == 1) echo 'selected';?> >Teacher</option>
                                         </select>
                                         
                                     </div>
