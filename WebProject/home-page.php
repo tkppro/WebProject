@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php session_start(); 
+  unset($_SESSION['firstLogin']);
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="schedule.php">Schedule</a>
@@ -31,7 +34,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Pricing</a>
           </li>
-          
         </ul>
       </div>
     </nav>
@@ -44,14 +46,14 @@
             <div class="card-header"><h1>Welcome</h1></div>
             <div class="card-body">
               <?php 
-                if (isset($_SESSION['username']) && $_SESSION['username']){
+                if (isset($_SESSION['username']) && $_SESSION['username']) {
                   echo 'Bạn đã đăng nhập với tên là '.$_SESSION['username']."<br/>";
                   echo 'Click vào đây để <a href="update.php">Update</a>';
                   echo 'Click vào đây để <a href="logout.php">Logout</a>';
                 }
-                else{
+                else {
                   echo 'Bạn chưa đăng nhập <a href="login.php">Login</a>';
-                 }
+                }
                 ?>
             </div>
           </div>

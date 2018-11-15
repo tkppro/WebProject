@@ -62,11 +62,13 @@ if (isset($_POST['dangnhap']))
         $row = mysqli_fetch_assoc($query);
         if ($row['email'] == '')
         {
+            $_SESSION['firstLogin'] = 'Chào mừng bạn đến trang cập nhật thông tin vì đây là lần đăng nhập đầu tiên của bạn.';
             header('location: http://localhost/WebProject/update.php');
         }
         // if ($row['position'] == 1)
         // {
-        header('location: http://localhost/WebProject/home-page.php');
+        else
+            header('location: http://localhost/WebProject/home-page.php');
         // }
             
     }//Lưu tên đăng nhập
