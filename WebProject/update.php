@@ -6,7 +6,7 @@ if (!isset($_SESSION['username']) && !$_SESSION['username'])
     header('location: http://localhost/WebProject/login.php');
     $_SESSION['errLogin'] = 'Bạn cần đăng nhập trước!';
 }
-
+//display updated information, blank if nothing
 $query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '{$_SESSION['username']}'");
 $row = mysqli_fetch_assoc($query);
 $fullName = $row['full_name'];

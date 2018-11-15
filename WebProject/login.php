@@ -121,7 +121,7 @@ if (isset($_POST['dangnhap']))
                                 </div>
                                 <?php
                                 if (isset($_GET['error']) == true)
-                                    echo '<font color="#FF0000"><p align="center">Username && Password not match</p></font>';
+                                    echo '<font color="#FF0000"><p align="center">Username or Password does not match</p></font>';
                                 ?>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">

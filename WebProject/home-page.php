@@ -1,5 +1,15 @@
 <?php session_start(); 
-  unset($_SESSION['firstLogin']);
+include('connection.php');
+unset($_SESSION['firstLogin']);
+if(!isset($_SESSION['username']) && !$_SESSION['username']) 
+  header('location: http://localhost/WebProject/login.php');
+
+$query = mysqli_query($conn, "SELECT * FROM account WHERE account_name = '{$_SESSION['username']}'");
+$row = mysqli_fetch_assoc($query);
+$fullName = $row['full_name'];
+
+mysqli_close($conn);
+
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +53,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
           <div class="card">
-            <div class="card-header"><h1>Welcome</h1></div>
+            <div class="card-header"><h1><?php echo 'Welcome ' . $fullName; ?></h1></div>
             <div class="card-body">
               <?php 
                 if (isset($_SESSION['username']) && $_SESSION['username']) {

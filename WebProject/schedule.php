@@ -1,6 +1,11 @@
 <?php
 include 'student.php';
 include 'course.php';
+session_start();
+if (!isset($_SESSION['username']) && !$_SESSION['username'])
+{
+    header('location: http://localhost/WebProject/login.php');
+}
 
 $studentA = new Student(1602, 'Thang', 'Web design', true);
 $studentB = new Student(1603, 'Dang', 'Web design', true);
