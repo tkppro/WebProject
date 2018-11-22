@@ -6,6 +6,7 @@
     <title>Trang đăng ký</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <header>
@@ -14,7 +15,7 @@
 
    <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-lg-8 col-md-12">
                     <div class="card">
                         <div class="card-header"></div>
 

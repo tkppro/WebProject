@@ -86,6 +86,7 @@ if (isset($_POST['dangnhap']))
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/main1.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <header class="header-login">
@@ -93,9 +94,10 @@ if (isset($_POST['dangnhap']))
         </header>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-lg-8 col-md-12">
                     <div class="card">
                         <div class="card-header">
+                        Login
                         <?php 
                             if (isset($_SESSION['errLogin']))
                                 echo '<font color="#FF0000"><p align="center">' . $_SESSION['errLogin'] . '</p></font>';
